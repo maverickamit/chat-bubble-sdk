@@ -1,18 +1,6 @@
 <script lang="ts">
-	interface Message {
-		text: string;
-		sender: string;
-	}
-	let messages: Message[] = [
-		{
-			text: 'hi',
-			sender: 'user'
-		},
-		{
-			text: 'hello',
-			sender: 'agent'
-		}
-	];
+	import type Message from './types.js';
+	export let messages: Message[] = [];
 	let newMessage = '';
 </script>
 
