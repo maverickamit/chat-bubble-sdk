@@ -1,7 +1,18 @@
 <script lang="ts">
 	import type Message from './types.js';
+
+	// Initialize messages as an empty array
 	export let messages: Message[] = [];
+	export let onSubmit: (arg: Message) => void = () => {};
 	let newMessage = '';
+
+	const handleSubmit = () => {
+		// Check if newMessage is not empty before submitting
+		if (newMessage.trim() !== '') {
+			onSubmit({ text: newMessage, sender: 'user' });
+			newMessage = ''; // Clear the input field after submission
+		}
+	};
 </script>
 
 <div class=" p-4 w-72 m-5">
@@ -10,7 +21,7 @@
 	</div>
 
 	<div class="max-h-48 overflow-y-auto mb-2">
-		{#each messages as message (message.text)}
+		{#each messages as message, index (index)}
 			<div
 				class="p-2 my-1 rounded max-w-4/5 {message.sender === 'agent'
 					? 'text-right bg-blue-100'
@@ -29,6 +40,7 @@
 			bind:value={newMessage}
 		/>
 		<button
+			on:click={handleSubmit}
 			class="bg-blue-500 text-white border border-blue-500 rounded-r p-2 ml-1
         hover:bg-blue-600 hover:border-blue-600"
 		>

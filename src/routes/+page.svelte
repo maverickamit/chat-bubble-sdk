@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ChatWindow from '$lib/ChatWindow.svelte';
 	import ChatBubble from '$lib/ChatBubble.svelte';
 	import type Message from '$lib/types.js';
 
@@ -13,8 +12,12 @@
 			sender: 'agent'
 		}
 	];
+
+	const onSubmit = (data: Message) => {
+		messages = [...messages, data];
+	};
 </script>
 
 <div class="flex max-w-10vw flex-col p-5">
-	<ChatBubble {messages} />
+	<ChatBubble {messages} {onSubmit} />
 </div>
