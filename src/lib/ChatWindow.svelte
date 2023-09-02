@@ -4,7 +4,7 @@
 	let newMessage = '';
 </script>
 
-<div class="border border-gray-300 rounded p-4 w-72 m-5">
+<div class=" p-4 w-72 m-5">
 	<div class="flex items-center mb-2">
 		<h4 class="text-lg font-semibold">Chat with an agent</h4>
 	</div>
