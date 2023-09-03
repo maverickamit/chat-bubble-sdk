@@ -37,8 +37,8 @@
 		{#each messages as message, index (index)}
 			<div
 				class="p-2 my-1 rounded max-w-4/5 {message.sender === 'agent'
-					? 'text-right bg-blue-100'
-					: 'text-left bg-green-100'}"
+					? 'text-left bg-blue-100'
+					: 'text-right bg-green-100'}"
 			>
 				{message.text}
 			</div>

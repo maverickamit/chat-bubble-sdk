@@ -21,8 +21,6 @@
 			<p>Chat now</p>
 		</div>
 	</button>
-	<!-- Chat bubble tail -->
-	<!-- <div class="w-4 h-4 bg-blue-500 transform rotate-45 -mt-1" /> -->
 </div>
 
 {#if $open}
