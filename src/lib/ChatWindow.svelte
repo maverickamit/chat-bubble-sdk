@@ -1,17 +1,24 @@
 <script lang="ts">
 	import type Message from './types.js';
+	import { tick, onMount } from 'svelte';
 
 	// Initialize messages as an empty array
 	export let messages: Message[] = [];
 	export let onSubmit: (arg: Message) => void = () => {};
 	let newMessage = '';
 
-	const handleSubmit = () => {
+	const scrollToBottom = () => {
+		const container = document.getElementById('messageContainer');
+		container.scrollTop = container.scrollHeight;
+	};
+	const handleSubmit = async () => {
 		// Check if newMessage is not empty before submitting
 		if (newMessage.trim() !== '') {
 			onSubmit({ text: newMessage, sender: 'user' });
 			newMessage = ''; // Clear the input field after submission
 		}
+		await tick();
+		scrollToBottom();
 	};
 
 	const handleKeyDown = (event: KeyboardEvent) => {
@@ -26,7 +33,7 @@
 		<h4 class="text-lg font-semibold">Chat with an agent</h4>
 	</div>
 
-	<div class="max-h-48 overflow-y-auto mb-2">
+	<div id="messageContainer" class="max-h-48 overflow-y-auto mb-2">
 		{#each messages as message, index (index)}
 			<div
 				class="p-2 my-1 rounded max-w-4/5 {message.sender === 'agent'
