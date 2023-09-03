@@ -13,6 +13,12 @@
 			newMessage = ''; // Clear the input field after submission
 		}
 	};
+
+	const handleKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			handleSubmit();
+		}
+	};
 </script>
 
 <div class=" p-4 w-72 m-5">
@@ -38,6 +44,7 @@
 			placeholder="Type your message..."
 			class="flex-grow p-2 border rounded-l border-gray-300"
 			bind:value={newMessage}
+			on:keydown={handleKeyDown}
 		/>
 		<button
 			on:click={handleSubmit}
